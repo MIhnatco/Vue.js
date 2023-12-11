@@ -1,3 +1,15 @@
+:root {
+  --main-background: #e6ecf1;
+  --question-background: #00ca8c;
+  --progress-background: #ddd;
+  --bar-background: #ff6372;
+  --title-background: #12cbc4;
+  --reset-background: #456;
+
+  --white-color: #fff;
+
+}
+
 * {
     box-sizing: border-box;
   }
@@ -5,7 +17,7 @@
     font-size: 20px;
     font-family: sans-serif;
     padding-top: 20px;
-    background: #e6ecf1;
+    background: var(--main-background);
   }
   
   .ctr {
@@ -15,6 +27,7 @@
     box-sizing: border-box;
     position: relative;
   }
+
   .questions-ctr {
     position: relative;
     width: 100%;
@@ -25,8 +38,8 @@
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    background-color: #00ca8c;
-    color: #fff;
+    background-color: var(--question-background);
+    color: var(--white-color);
     box-sizing: border-box;
   }
   .single-question {
@@ -38,7 +51,7 @@
     padding: 20px;
     font-size: 18px;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--white-color);
     transition: 0.2s linear all;
   }
   .answer span {
@@ -50,12 +63,12 @@
   .progress {
     height: 50px;
     margin-top: 10px;
-    background-color: #ddd;
+    background-color: var(--progress-background);
     position: relative;
   }
   .bar {
     height: 50px;
-    background-color: #ff6372;
+    background-color: var(--bar-background);
     transition: all 0.3s linear;
   }
   .status {
@@ -63,7 +76,7 @@
     top: 15px;
     left: 0;
     text-align: center;
-    color: #fff;
+    color: var(--white-color);
     width: 100%;
   }
   .answer:not(.is-answered) {
@@ -81,8 +94,8 @@
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    background-color: #12cbc4;
-    color: #fff;
+    background-color: var(--title-background);
+    color: var(--white-color);
     box-sizing: border-box;
   }
   .desc {
@@ -90,7 +103,7 @@
     padding: 20px;
     font-size: 18px;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--white-color);
     transition: 0.4s linear all;
     text-align: center;
   }
@@ -110,13 +123,14 @@
   } 
   
   .reset-btn {
-    background-color: #ff6372;
+    background-color: var(--reset-background);
       border: 0;
       font-size: 22px;
-      color: #fff;
+      color: var(--white-color);
       padding: 10px 25px;
       margin: 10px auto;
       display: block;
+      border-radius: 4px;
   }
   
   .result{ 
@@ -127,5 +141,6 @@
   .reset-btn:active, .reset-btn:focus, .reset-btn:hover{
     border: 0;
     outline: 0;
+    filter: brightness(150%);
   }
   
