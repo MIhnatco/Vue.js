@@ -1,9 +1,9 @@
 <template>
     <div class="result">
 
-        <div class="title">You got sample result 1!</div>
+        <div class="title">{{ results[resultIndex].title }}</div>
         <div class="desc">
-            Enter a short description here about the result.
+            {{ results[resultIndex].desc }}
         </div>
 
     </div><!-- /result -->
@@ -11,7 +11,19 @@
 
 <script>
     export default {
-        name: "Result"
+        name: "Result",
+        props: ['results', 'totalCorrect'],
+        computed: {
+            resultIndex(){
+                let index = 0;
+                    this.results.forEach((e,i) => {
+                        if(e.min <= this.totalCorrect && e.max >= this.totalCorrect){
+                            index = i;
+                        }
+                    })
+                return index;
+            }
+        }
     }
 </script>
 

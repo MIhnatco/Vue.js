@@ -19,6 +19,7 @@
     padding-top: 20px;
     background: var(--main-background);
   }
+
   
   .ctr {
     margin: 0 auto;
@@ -26,6 +27,12 @@
     width: 100%;
     box-sizing: border-box;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
   }
 
   .questions-ctr {

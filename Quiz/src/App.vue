@@ -94,13 +94,13 @@
             results: [
                     {
                         min: 0,
-                        max: 2,
+                        max: 3,
                         title: "Try again!",
                         desc: "Do a little more studying and you may succeed!"
                     },
                     {
-                        min: 3,
-                        max: 3,
+                        min: 4,
+                        max: 4,
                         title: "Wow, you're a genius!",
                         desc: "Studying has definitely paid off for you!"
                     }
@@ -116,28 +116,39 @@
 
             this.questionsAnswered++
             
+        },
+        reset(){
+            this.questionsAnswered = 0;
+            this.totalCorrect = 0;
         }
     }
   }
 </script> 
 
 <template>
-    <div class="ctr">
 
-        <!-- Questions component -->
-        <Questions v-if="questionsAnswered < questions.length"
-             :questions="questions"
+    <div class="ctr">
+            
+            <!-- Questions component -->
+            <Questions v-if="questionsAnswered < questions.length"
+            :questions="questions"
             :questionsAnswered="questionsAnswered" 
             @question-answered="questionAnswered"
             />
-
-        <!-- Result component -->
-        <Result v-else :results="results" :totalCorrect="totalCorrect" />
-
-        <button type="button" class="reset-btn">Reset</button>
-
+            
+            <!-- Result component -->
+            <Result v-else :results="results" :totalCorrect="totalCorrect" />
+            
+            <button type="button" 
+                    class="reset-btn" 
+                    @click.prevent="reset"
+                    v-if="this.questionsAnswered === questions.length"
+            >
+                Reset
+            </button>
+            
     </div><!-- /ctr -->
-  
+
 </template>
 
 <style scoped>
