@@ -11,6 +11,7 @@
     data(){
         return {
             questionsAnswered: 0,
+            totalCorrect: 0,
             questions: [
                 {
                     q: 'What is 2 + 2?', 
@@ -71,6 +72,24 @@
                         }
                     ] 
                 },
+                {
+                    q: "Who is author of the 'Lord of the Rings' book?",
+                    answers: [
+                    {
+                            text: 'J. R. R. Tolkien',
+                            is_correct: true
+                        },
+                        {
+                            text: 'Rayan Holiday',
+                            is_correct: false 
+                        },
+                        {
+                            text: 'Brad Stulberg',
+                            is_correct: false 
+                        }
+
+                    ]
+                }
             ],
             results: [
                     {
@@ -87,7 +106,18 @@
                     }
                 ]
             }
+        },
+    methods: {
+        questionAnswered(is_correct){
+        
+            if(is_correct){
+                this.totalCorrect++;
+            }
+
+            this.questionsAnswered++
+            
         }
+    }
   }
 </script> 
 
@@ -95,10 +125,14 @@
     <div class="ctr">
 
         <!-- Questions component -->
-        <Questions v-if="questionsAnswered < questions.length" :questions="questions"/>
+        <Questions v-if="questionsAnswered < questions.length"
+             :questions="questions"
+            :questionsAnswered="questionsAnswered" 
+            @question-answered="questionAnswered"
+            />
 
         <!-- Result component -->
-        <Result v-else />
+        <Result v-else :results="results" :totalCorrect="totalCorrect" />
 
         <button type="button" class="reset-btn">Reset</button>
 
