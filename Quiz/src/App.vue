@@ -128,16 +128,21 @@
 <template>
 
     <div class="ctr">
-            
-            <!-- Questions component -->
-            <Questions v-if="questionsAnswered < questions.length"
-            :questions="questions"
-            :questionsAnswered="questionsAnswered" 
-            @question-answered="questionAnswered"
-            />
-            
-            <!-- Result component -->
-            <Result v-else :results="results" :totalCorrect="totalCorrect" />
+  
+            <Transition name='fade'>
+
+                <!-- Questions component -->
+                <Questions v-if="questionsAnswered < questions.length"
+                :questions="questions"
+                :questionsAnswered="questionsAnswered" 
+                @question-answered="questionAnswered"
+                />
+                
+                
+                
+                <!-- Result component -->
+                <Result v-else :results="results" :totalCorrect="totalCorrect" />
+            </Transition>
             
             <button type="button" 
                     class="reset-btn" 

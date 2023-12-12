@@ -8,7 +8,7 @@
 
     </div><!-- /result -->
 </template>
-
+ 
 <script>
     export default {
         name: "Result",

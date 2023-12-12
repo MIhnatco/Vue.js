@@ -35,10 +35,13 @@
 
   }
 
-  .questions-ctr {
+
+  .questions-ctr,
+  .single-question {
     position: relative;
     width: 100%;
   }
+
   .question {
     width: 100%;
     padding: 20px;
@@ -48,10 +51,6 @@
     background-color: var(--question-background);
     color: var(--white-color);
     box-sizing: border-box;
-  }
-  .single-question {
-    position: relative;
-    width: 100%;
   }
   .answer {
     border: 1px solid #8e959f;
@@ -114,6 +113,34 @@
     transition: 0.4s linear all;
     text-align: center;
   }
+
+  .result{ 
+    width: 100%;
+  }
+
+  /* reset button */
+
+  .reset-btn {
+    background-color: var(--reset-background);
+    border: 0;
+    font-size: 22px;
+    color: var(--white-color);
+    padding: 10px 25px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 4px;
+  }
+  
+  
+  .reset-btn:active, .reset-btn:focus, .reset-btn:hover{
+    border: 0;
+    outline: 0;
+    filter: brightness(150%);
+  }
+  
+
+  /* Transition */
+  
   .fade-enter-from {
     opacity: 0;
   }
@@ -128,26 +155,4 @@
   .fade-leave-to {
     opacity: 0;
   } 
-  
-  .reset-btn {
-    background-color: var(--reset-background);
-      border: 0;
-      font-size: 22px;
-      color: var(--white-color);
-      padding: 10px 25px;
-      margin: 10px auto;
-      display: block;
-      border-radius: 4px;
-  }
-  
-  .result{ 
-    width: 100%;
-  }
-  
-  
-  .reset-btn:active, .reset-btn:focus, .reset-btn:hover{
-    border: 0;
-    outline: 0;
-    filter: brightness(150%);
-  }
   

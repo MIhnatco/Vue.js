@@ -6,21 +6,28 @@
             <div class="status">{{questionsAnswered}} out of {{ questions.length }} questions answered</div>
         </div> <!-- /progress-->
 
-        <div class="single-question" v-for="(question, index) in questions" :key="question.q" v-show="questionsAnswered === index">
+        <transition-group name="fade">
 
-            <div class="question">{{question.q}}</div>
-            <div class="answers">
-                <div class="answer" 
-                        v-for="answer in question.answers" 
-                        :key="answer.text"
-                        @click.prevent = 'selectAnswer(answer.is_correct)'
-                >
-                    {{answer.text}}
+            <div class="single-question" 
+                        v-for="(question, index) in questions" 
+                        :key="question.q" 
+                        v-show="questionsAnswered === index">
+    
+                <div class="question">{{question.q}}</div>
+                <div class="answers">
+                    <div class="answer" 
+                            v-for="answer in question.answers" 
+                            :key="answer.text"
+                            @click.prevent = 'selectAnswer(answer.is_correct)'
+                    >
+                        {{answer.text}}
+                    </div>
+                   
                 </div>
-               
-            </div>
+    
+            </div><!-- /single-question -->
 
-        </div><!-- /single-question -->
+        </transition-group>
 
     </div> <!-- /questions-ctr -->
 </template>
