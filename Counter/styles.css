@@ -9,6 +9,7 @@ body {
 }
 
 h1,
+h2,
 h3 {
   color: #806265;
 }
@@ -18,4 +19,50 @@ header {
 
 header ul {
   text-align: left;
+}
+
+#app {
+  width: 80%;
+  max-width: 700px;
+  height: 70vh;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+}
+
+.container h2 {
+  font-size: 4rem;
+  margin: 0 2rem;
+  font-family: sans-serif;
+}
+
+.container button {
+  align-self: center;
+}
+
+button {
+  border: none;
+  background: #5c3539;
+  color: #fff;
+  padding: 6px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 2rem;
+}
+#add:hover {
+  background: #1d5119;
+}
+#subtract:hover {
+  background: #5a180e;
+}
+#reset:hover {
+  background: #7b0309;
 }

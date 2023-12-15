@@ -10,8 +10,28 @@
   <body>
     <header>
       <h1>Counter in Vue.js</h1>
-      <h3>Two-way data binding.</h3>
+      <h3>Reactivity in Vue.</h3>
+      <p>
+        Reactivity in Vue.js refers to the framework's ability to automatically
+        update the user interface in response to changes in the underlying data.
+        Vue achieves reactivity through its reactivity system.
+      </p>
     </header>
+
+    <section id="app">
+      <div class="container">
+        <!-- increase value button-->
+        <button id="add" v-on:click="increase">+</button>
+
+        <h2>{{counter}}</h2>
+
+        <!-- decrease value button -->
+        <button id="subtract" @click="decrease">-</button>
+      </div>
+
+      <!-- reset button -->
+      <button @click="reset" id="reset">Reset</button>
+    </section>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="index.js"></script>
