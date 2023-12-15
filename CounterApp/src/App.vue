@@ -1,8 +1,6 @@
 <script>
 import CounterApp from '@/components/counterApp.vue'
 
-
-
 export default {
   name: 'App',
   components: {
