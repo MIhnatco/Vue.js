@@ -3,6 +3,11 @@ import CounterApp from '@/components/counterApp.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      title: 'Counter App'
+    }
+  },
   components: {
     CounterApp
   }
@@ -10,9 +15,15 @@ export default {
 </script>
 
 <template>
-  <h1>Counter App</h1>
+  <h1>{{ title }}</h1>
 
   <CounterApp />
 </template>
 
-<style></style>
+<style>
+h1 {
+  color: #b20202;
+  letter-spacing: 1px;
+  font-size: 3rem;
+}
+</style>
