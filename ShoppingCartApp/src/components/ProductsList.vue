@@ -1,5 +1,6 @@
 <script>
 import { products } from '../products'
+import Product from './Product.vue'
 
 export default {
   name: 'ProductsList',
@@ -13,6 +14,9 @@ export default {
     addToCart(product) {
       this.$emit('add-to-cart', product)
     }
+  },
+  components: {
+    Product
   }
 }
 </script>
@@ -23,10 +27,8 @@ export default {
 
     <div id="products">
       <div class="product" v-for="product in products" :key="product.id">
-        <h2>{{ product.name }}</h2>
-        <h4>Price: ${{ product.price }}</h4>
-        <p>In Stock: {{ product.quantity }}</p>
-        <p>ID: {{ product.id }}</p>
+        
+        <Product :product="product" />
 
         <button class="btnAdd" @click="addToCart(product)">Add to Cart</button>
       </div>

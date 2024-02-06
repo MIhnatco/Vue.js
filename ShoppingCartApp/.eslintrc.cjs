@@ -10,5 +10,18 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
-  }
+  },
+  overrides: [
+    {
+      files: ['src/components/__tests__/**.spec.js'], 
+      globals: {
+        test: 'readonly', 
+        describe: 'readonly', 
+        expect: 'readonly', 
+        beforeEach: 'readonly', 
+        it: 'readonly', 
+        
+      }
+    }
+  ]
 }
