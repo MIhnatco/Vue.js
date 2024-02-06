@@ -1,0 +1,63 @@
+<script>
+import { products } from '../products'
+
+export default {
+  name: 'ProductsList',
+  data() {
+    return {
+      products: [...products]
+    }
+  }
+}
+</script>
+
+<template>
+  <div>
+    <h1>Products List</h1>
+
+    <div id="products">
+      <div class="product" v-for="product in products" :key="product.id">
+        <h2>{{ product.name }}</h2>
+        <h4>Price: ${{ product.price }}</h4>
+        <p>In Stock: {{ product.quantity }}</p>
+        <p>ID: {{ product.id }}</p>
+
+        <button class="btnAdd">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+#products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product {
+  width: 33%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 0.8rem 0.5rem;
+}
+
+.product h2 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.btnAdd {
+  width: 90%;
+  border: none;
+  margin: 0.8rem 0;
+  padding: 1rem 0;
+  background-color: rgb(6, 103, 19);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.btnAdd:hover {
+  cursor: pointer;
+}
+</style>
