@@ -4,17 +4,27 @@ import ProductsList from './components/ProductsList.vue'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      products: []
+    }
+  },
   components: {
     ShoppingCart,
     ProductsList
+  },
+  methods: {
+    addToCart(product) {
+      this.products.push(product)
+    }
   }
 }
 </script>
 
 <template>
   <div id="container">
-    <products-list></products-list>
-    <shopping-cart></shopping-cart>
+    <products-list @add-to-cart="addToCart"></products-list>
+    <shopping-cart :products="products"></shopping-cart>
   </div>
 </template>
 

@@ -7,6 +7,12 @@ export default {
     return {
       products: [...products]
     }
+  },
+  emits: ['add-to-cart'],
+  methods: {
+    addToCart(product) {
+      this.$emit('add-to-cart', product)
+    }
   }
 }
 </script>
@@ -22,7 +28,7 @@ export default {
         <p>In Stock: {{ product.quantity }}</p>
         <p>ID: {{ product.id }}</p>
 
-        <button class="btnAdd">Add to Cart</button>
+        <button class="btnAdd" @click="addToCart(product)">Add to Cart</button>
       </div>
     </div>
   </div>
