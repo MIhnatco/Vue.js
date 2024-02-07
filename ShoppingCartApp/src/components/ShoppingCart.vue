@@ -1,11 +1,10 @@
 <script>
-
-  import Product from './Product.vue';
+import Product from './Product.vue'
 
 export default {
   name: 'ShoppingCart',
   props: {
-    products: {
+    cartItems: {
       type: Array
     }
   },
@@ -17,12 +16,11 @@ export default {
 
 <template>
   <div>
-    <h1>Shopping Cart</h1>
+    <h1>Shopping Cart - {{ cartItems.length }} Items</h1>
 
     <div id="productsToBuy">
-      <div class="productBuy" v-for="product in products" :key="product.id">
-        
-        <Product :product="product"/>
+      <div class="productBuy" v-for="product in cartItems" :key="product.id">
+        <Product :product="product" />
 
         <button class="btnRemove">Remove from Cart</button>
       </div>

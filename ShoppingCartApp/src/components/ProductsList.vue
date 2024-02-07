@@ -13,6 +13,13 @@ export default {
   methods: {
     addToCart(product) {
       this.$emit('add-to-cart', product)
+    },
+
+    removeFromList(product) {
+      const index = this.products.findIndex((p) => p.id === product.id)
+      if (index !== -1) {
+        this.products.splice(index, 1)
+      }
     }
   },
   components: {
@@ -27,7 +34,6 @@ export default {
 
     <div id="products">
       <div class="product" v-for="product in products" :key="product.id">
-        
         <Product :product="product" />
 
         <button class="btnAdd" @click="addToCart(product)">Add to Cart</button>

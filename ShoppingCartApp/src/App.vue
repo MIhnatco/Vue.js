@@ -6,7 +6,7 @@ export default {
   name: 'App',
   data() {
     return {
-      products: []
+      shoppingCart: []
     }
   },
   components: {
@@ -15,7 +15,11 @@ export default {
   },
   methods: {
     addToCart(product) {
-      this.products.push(product)
+      //add the product to shoppingCart
+      this.shoppingCart.push(product)
+
+      //remove the product from the product list
+      this.$refs.productList.removeFromList(product)
     }
   }
 }
@@ -23,8 +27,9 @@ export default {
 
 <template>
   <div id="container">
-    <products-list @add-to-cart="addToCart"></products-list>
-    <shopping-cart :products="products"></shopping-cart>
+    <products-list ref="productList" @add-to-cart="addToCart"></products-list>
+
+    <shopping-cart :cartItems="shoppingCart"></shopping-cart>
   </div>
 </template>
 
