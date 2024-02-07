@@ -16,6 +16,12 @@ export default {
       // Emit an event to inform the parent component to remove the item from the cart
       this.$emit('remove-from-cart', product)
     }
+  },
+  computed: {
+    totalPrice() {
+      const total = this.cartItems.reduce((total, item) => (total += item.price * item.quantity), 0)
+      return total.toFixed(2)
+    }
   }
 }
 </script>
@@ -23,6 +29,9 @@ export default {
 <template>
   <div>
     <h1>Shopping Cart - {{ cartItems.length }} Items</h1>
+
+    <!-- Display total price in shopping cart -->
+    <h2>Total Price: ${{ totalPrice }}</h2>
 
     <div id="productsToBuy">
       <div class="productBuy" v-for="product in cartItems" :key="product.id">
