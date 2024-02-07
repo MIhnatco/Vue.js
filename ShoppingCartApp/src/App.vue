@@ -15,8 +15,18 @@ export default {
   },
   methods: {
     addToCart(product) {
-      //add the product to shoppingCart
-      this.shoppingCart.push(product)
+      const existingProductIndex = this.shoppingCart.findIndex((p) => p.id === product.id)
+
+      if (existingProductIndex !== -1) {
+        //update quantity, product is already in shoppingCart
+        this.shoppingCart[existingProductIndex].quantity++
+      } else {
+        //add the product to shoppingCart
+        this.shoppingCart.push({
+          ...product,
+          quantity: 1 //new product's quantity
+        })
+      }
     },
     removeFromCart(product) {
       //remove the product from shoppingCart
