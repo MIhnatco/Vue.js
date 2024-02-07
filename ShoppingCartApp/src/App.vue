@@ -17,12 +17,8 @@ export default {
     addToCart(product) {
       //add the product to shoppingCart
       this.shoppingCart.push(product)
-
-      //remove the product from the product list
-      this.$refs.productList.removeFromList(product)
     },
     removeFromCart(product) {
-
       //remove the product from shoppingCart
       const index = this.shoppingCart.findIndex((p) => p.id === product.id)
       if (index !== -1) {
@@ -38,7 +34,7 @@ export default {
 
 <template>
   <div id="container">
-    <products-list ref="productList" @add-to-cart="addToCart"></products-list>
+    <products-list @add-to-cart="addToCart"></products-list>
 
     <shopping-cart :cartItems="shoppingCart" @remove-from-cart="removeFromCart"></shopping-cart>
   </div>

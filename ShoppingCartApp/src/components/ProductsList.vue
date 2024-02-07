@@ -13,12 +13,19 @@ export default {
   methods: {
     addToCart(product) {
       this.$emit('add-to-cart', product)
-    },
 
-    removeFromList(product) {
       const index = this.products.findIndex((p) => p.id === product.id)
+  
       if (index !== -1) {
-        this.products.splice(index, 1)
+        //decrease the quantity of the chosen product
+        if (this.products[index].quantity > 0) {
+          this.products[index].quantity--
+        } else {
+          //handle case where quantity is already 0
+          console.error('Quantity cannot be negative')
+        }
+      } else {
+        console.error('Product not found in the list')
       }
     },
     addToProductList(product) {
