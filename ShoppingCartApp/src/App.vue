@@ -27,6 +27,8 @@ export default {
           quantity: 1 //new product's quantity
         })
       }
+
+      console.log(this.shoppingCart)
     },
     removeFromCart(product) {
       //remove the product from shoppingCart
@@ -39,14 +41,14 @@ export default {
       this.$refs.productList.addToProductList(product)
     },
     clearCart() {
-      //save the products with change qunatities
+      //save the products with changed qunatities
       const updatedProducts = this.shoppingCart.reduce(
         (acc, cartItem) => {
           const index = acc.findIndex((prod) => prod.id === cartItem.id)
+
           if (index !== -1) {
             acc[index].quantity += cartItem.quantity
           }
-
           return acc
         },
         [...this.$refs.productList.products]
@@ -64,7 +66,7 @@ export default {
 
 <template>
   <div id="container">
-    <products-list @add-to-cart="addToCart"></products-list>
+    <products-list ref="productList" @add-to-cart="addToCart"></products-list>
 
     <shopping-cart
       :cartItems="shoppingCart"
