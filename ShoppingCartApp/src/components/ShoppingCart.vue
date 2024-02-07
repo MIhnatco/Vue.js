@@ -15,12 +15,20 @@ export default {
     removeFromCart(product) {
       // Emit an event to inform the parent component to remove the item from the cart
       this.$emit('remove-from-cart', product)
+    },
+    clearCart() {
+      // Clear the cart by resetting the cartItems array
+      this.$emit('clear-cart')
     }
   },
   computed: {
     totalPrice() {
       const total = this.cartItems.reduce((total, item) => (total += item.price * item.quantity), 0)
       return total.toFixed(2)
+    },
+    totalItems() {
+      const total = this.cartItems.reduce((total, item) => (total += item.quantity), 0)
+      return total
     }
   }
 }
@@ -28,10 +36,14 @@ export default {
 
 <template>
   <div>
-    <h1>Shopping Cart - {{ cartItems.length }} Items</h1>
+    <h1>Shopping Cart - {{ totalItems }} Items</h1>
 
-    <!-- Display total price in shopping cart -->
-    <h2>Total Price: ${{ totalPrice }}</h2>
+    <div class="smallContainer">
+      <!-- Display total price in shopping cart -->
+      <h2>Total Price: ${{ totalPrice }}</h2>
+
+      <button class="clearBtn" @click="clearCart">Clear the Cart</button>
+    </div>
 
     <div id="productsToBuy">
       <div class="productBuy" v-for="product in cartItems" :key="product.id">
@@ -44,6 +56,24 @@ export default {
 </template>
 
 <style>
+.smallContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.clearBtn {
+  border: none;
+  background-color: red;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 5px;
+}
+
+.clearBtn:hover {
+  cursor: pointer;
+}
+
 .productBuy {
   width: 55%;
   border: 1px solid gray;
