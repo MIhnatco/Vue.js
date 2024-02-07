@@ -10,6 +10,12 @@ export default {
   },
   components: {
     Product
+  },
+  methods: {
+    removeFromCart(product) {
+      // Emit an event to inform the parent component to remove the item from the cart
+      this.$emit('remove-from-cart', product)
+    }
   }
 }
 </script>
@@ -22,7 +28,7 @@ export default {
       <div class="productBuy" v-for="product in cartItems" :key="product.id">
         <Product :product="product" />
 
-        <button class="btnRemove">Remove from Cart</button>
+        <button class="btnRemove" @click="removeFromCart(product)">Remove from Cart</button>
       </div>
     </div>
   </div>

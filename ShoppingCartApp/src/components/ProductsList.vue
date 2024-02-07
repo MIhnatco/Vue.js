@@ -20,6 +20,9 @@ export default {
       if (index !== -1) {
         this.products.splice(index, 1)
       }
+    },
+    addToProductList(product) {
+      this.products.push(product)
     }
   },
   components: {
