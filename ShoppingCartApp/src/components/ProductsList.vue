@@ -15,7 +15,7 @@ export default {
       this.$emit('add-to-cart', product)
 
       const index = this.products.findIndex((p) => p.id === product.id)
-  
+
       if (index !== -1) {
         //decrease the quantity of the chosen product
         if (this.products[index].quantity > 0) {
@@ -29,7 +29,14 @@ export default {
       }
     },
     addToProductList(product) {
-      this.products.push(product)
+      const index = this.products.findIndex((p) => p.id === product.id)
+
+      if (index !== -1) {
+        //increase the quantity of the deleted product
+        this.products[index].quantity += product.quantity
+      } else {
+        this.products.push(product)
+      }
     }
   },
   components: {
