@@ -3,6 +3,7 @@
   <h4>Price: ${{ product.price }}</h4>
   <p>In Stock: {{ product.quantity }}</p>
   <p>ID: {{ product.id }}</p>
+ 
 </template>
 
 <script>
@@ -16,4 +17,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+label {
+  display: inline;
+}
+</style>

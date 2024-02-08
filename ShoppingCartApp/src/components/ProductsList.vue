@@ -11,30 +11,34 @@ export default {
   },
   emits: ['add-to-cart'],
   methods: {
+    findProductIndexById(id) {
+      return this.products.findIndex((product) => product.id === id)
+    },
     addToCart(product) {
-      this.$emit('add-to-cart', product)
-
-      const index = this.products.findIndex((p) => p.id === product.id)
+      const index = this.findProductIndexById(product.id)
 
       if (index !== -1) {
-        //decrease the quantity of the chosen product
         if (this.products[index].quantity > 0) {
+          //decrease the quantity of the chosen product
           this.products[index].quantity--
+          this.$emit('add-to-cart', product)
         } else {
           //handle case where quantity is already 0
-          console.error('Quantity cannot be negative')
+          console.error('Cannot add product to cart: Quantity is already 0')
         }
       } else {
-        console.error('Product not found in the list')
+        //Handle case where product is not found in the list
+        console.error('Cannot add product to cart: Product not found in the list')
       }
     },
     addToProductList(product) {
-      const index = this.products.findIndex((p) => p.id === product.id)
+      const index = this.findProductIndexById(product.id)
 
       if (index !== -1) {
         //increase the quantity of the deleted product
         this.products[index].quantity += product.quantity
       } else {
+        //Handle case where product is not found in the list
         this.products.push(product)
       }
     }
@@ -53,7 +57,10 @@ export default {
       <div class="product" v-for="product in products" :key="product.id">
         <Product :product="product" />
 
-        <button class="btnAdd" @click="addToCart(product)">Add to Cart</button>
+        <!-- Disable the button if the product is out of stock -->
+        <button class="btnAdd" @click="addToCart(product)" :disabled="product.quantity === 0">
+          Add to Cart
+        </button>
       </div>
     </div>
   </div>
