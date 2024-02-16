@@ -1,11 +1,15 @@
 <template>
   <div class="container">
-    <header>
+    <header></header>
+
+    <main>
       <h1>Products List</h1>
-      <p v-for="product in products" :key="product.id">
-        {{ product.name }}
-      </p>
-    </header>
+
+      <div id="productsList">
+        <product-app v-for="product in products" :key="product.id" :product="product">
+        </product-app>
+      </div>
+    </main>
   </div>
 </template>
 
@@ -13,12 +17,21 @@
 import { mapState } from 'pinia'
 import useProductsStore from '@/stores/products'
 
+import ProductApp from './ProductApp.vue'
 export default {
   name: 'ProductsApp',
   computed: {
     ...mapState(useProductsStore, ['products'])
+  },
+  components: {
+    ProductApp
   }
 }
 </script>
 
-<style></style>
+<style>
+#productsList {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
