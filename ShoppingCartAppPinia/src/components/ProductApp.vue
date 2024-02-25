@@ -1,14 +1,14 @@
 <template>
   <div class="product-card">
-    <h3 id="name">{{ product.name }}</h3>
-    <p><strong>Department:</strong> {{ product.department }}</p>
+    <h3 id="name">{{ prod.name }}</h3>
+    <p><strong>Department:</strong> {{ prod.department }}</p>
 
-    <p><strong>Description:</strong> {{ product.descr }}</p>
+    <p><strong>Description:</strong> {{ prod.descr }}</p>
     <div class="details">
-      <p><strong>Price:</strong> ${{ product.price }}</p>
-      <p><strong>In Stock:</strong> {{ product.inStock }}</p>
+      <p><strong>Price:</strong> ${{ prod.price }}</p>
+      <p><strong>In Stock:</strong> {{ prod.inStock }}</p>
     </div>
-    <button id="btn" :disabled="product.inStock === 0">Add to Cart</button>
+    <button id="btn" :disabled="prod.inStock === 0">Add to Cart</button>
   </div>
 </template>
 
@@ -16,7 +16,7 @@
 export default {
   name: 'ProductApp',
   props: {
-    product: {
+    prod: {
       type: Object
     }
   }

@@ -1,8 +1,7 @@
 <template>
   <header>
-    <h1>ShoppingShop</h1>
-    <input type="text" placeholder="What are you looking for?" />
-    <i class="fa-solid fa-cart-shopping"></i>
+    <h2>ShoppingShop</h2>
+    <i class="fa-solid fa-cart-shopping fa-2x"> </i>
   </header>
 </template>
 
@@ -12,12 +11,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 header {
-  height: 40px;
+  padding: 0 2rem;
+  height: 7vh;
   background-color: #456;
   color: #fff;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 </style>

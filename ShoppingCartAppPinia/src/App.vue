@@ -1,6 +1,6 @@
 <script>
 import ProductsApp from './components/ProductsApp.vue'
-import HeaderApp from './components/HeaderApp.vue';
+import HeaderApp from './components/HeaderApp.vue'
 
 export default {
   name: 'App',
