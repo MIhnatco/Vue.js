@@ -10,7 +10,7 @@
 export default {
   name: 'ProductApp',
   props: {
-    product: {
+    product: { 
       type: Object
     }
   }
