@@ -1,1 +1,11 @@
 @import './base.css';
+
+a {
+  transition: all 0.15s ease;
+}
+
+/* text-yellow-500 */
+a:hover {
+  color: rgb(245, 190, 71);
+  text-decoration: none;
+}
