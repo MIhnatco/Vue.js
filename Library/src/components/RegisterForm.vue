@@ -47,7 +47,7 @@
     <button
       type="submit"
       aria-label="submit"
-      class="bock w-full bg-yellow-800 text-white py-1.5 px-3 rounded"
+      class="bock w-full bg-yellow-800 hover:bg-yellow-700 text-white py-1.5 px-3 rounded"
     >
       Submit
     </button>
