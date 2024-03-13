@@ -11,7 +11,7 @@
           </li>
 
           <li>
-            <a href="#" aria-label="Login or Register" class="px-2 text-white">Login/Register</a>
+            <a href="#" aria-label="Login or Register" class="px-2 text-white" @click.prevent="toggleAuthModal">Login/Register</a>
           </li>
         </ul>
       </div>
@@ -20,7 +20,18 @@
 </template>
 
 <script>
+import {mapStores} from 'pinia'
+import useModalStore from '@/stores/modal'
+
 export default {
-  name: 'HeaderApp'
+  name: 'HeaderApp',
+  computed: {
+    ...mapStores(useModalStore)
+  }, 
+  methods: {
+    toggleAuthModal(){
+      this.modalStore.isOpen = !this.modalStore.isOpen
+    }
+  }
 }
 </script>
