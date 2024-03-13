@@ -19,7 +19,7 @@
             <p class="text-2xl text-yellow-800 font-bold">Your Account</p>
 
             <!--Modal Close Button-->
-            <div class="modal-close cursor-pointer z-50">
+            <div class="modal-close cursor-pointer z-50" @click="isOpen = false">
               <i class="fas fa-times text-yellow-800"></i>
             </div>
           </div>
@@ -50,12 +50,13 @@ import LoginForm from './LoginForm.vue'
 import RegisterForm from './RegisterForm.vue'
 
 import useModalStore from '@/stores/modal'
-import { mapState } from 'pinia'
+import { mapState, mapWritableState } from 'pinia'
 
 export default {
   name: 'Auth',
   computed: {
-    ...mapState(useModalStore, ['hiddenClass'])
+    ...mapState(useModalStore, ['hiddenClass']),
+    ...mapWritableState(useModalStore, ['isOpen'])
   },
   components: {
     LoginForm,
