@@ -19,7 +19,7 @@
             <p class="text-2xl text-yellow-800 font-bold">Your Account</p>
 
             <!--Modal Close Button-->
-            <div class="modal-close cursor-pointer z-50" @click="isOpen = false">
+            <div class="modal-close cursor-pointer z-50" @click="modalVisibility = false">
               <i class="fas fa-times text-yellow-800"></i>
             </div>
           </div>
@@ -56,7 +56,9 @@ export default {
   name: 'Auth',
   computed: {
     ...mapState(useModalStore, ['hiddenClass']),
-    ...mapWritableState(useModalStore, ['isOpen'])
+    ...mapWritableState(useModalStore, {
+      modalVisibility: 'isOpen'
+    })
   },
   components: {
     LoginForm,
