@@ -6,6 +6,6 @@ a {
 
 /* text-yellow-500 */
 a:hover {
-  color: rgb(245, 190, 71);
+  color: #f4c850;
   text-decoration: none;
 }

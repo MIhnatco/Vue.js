@@ -19,7 +19,7 @@
         type="password"
         id="password"
         aria-label="password"
-        placeholder="Enter Email:"
+        placeholder="Enter password:"
       />
     </div>
 

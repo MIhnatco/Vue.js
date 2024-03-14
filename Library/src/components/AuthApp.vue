@@ -27,18 +27,32 @@
           <!--Tabs-->
           <ul class="flex flex-wrap mb-4">
             <li class="flex-auto text-center">
-              <a href="#" class="block rounded py-3 px-4 transition">Login</a>
+              <a
+                href="#"
+                class="block rounded py-3 px-4 transition"
+                @click.prevent="tab = 'login'"
+                :class="{
+                  'bg-yellow-800 text-white hover:bg-yellow-700': tab === 'login'
+                }"
+                >Login</a
+              >
             </li>
             <li class="flex-auto text-center">
-              <a href="#" class="block rounded py-3 px-4 transition">Register</a>
+              <a
+                href="#"
+                class="block rounded py-3 px-4 transition"
+                @click.prevent="tab = 'register'"
+                :class="{ 'bg-yellow-800 text-white hover:bg-yellow-700': tab === 'register' }"
+                >Register</a
+              >
             </li>
           </ul>
 
           <!--Login Form-->
-          <login-form></login-form>
+          <login-form v-show="tab === 'login'"></login-form>
 
           <!--Register Form-->
-          <register-form></register-form>
+          <register-form v-show="tab === 'register'"></register-form>
         </div>
       </div>
     </div>
@@ -54,6 +68,11 @@ import { mapState, mapWritableState } from 'pinia'
 
 export default {
   name: 'Auth',
+  data() {
+    return {
+      tab: 'login'
+    }
+  },
   computed: {
     ...mapState(useModalStore, ['hiddenClass']),
     ...mapWritableState(useModalStore, {
