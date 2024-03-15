@@ -9,7 +9,7 @@
     </div>
 
     <!-- Registration form -->
-    <vee-form :validation-schema="schema">
+    <vee-form :validation-schema="schema" @submit="register">
       <!-- Name-->
       <div class="mb-3">
         <label for="name" class="inline-block mb-2">Name:</label>
@@ -63,7 +63,7 @@
           placeholder="Confirm password:"
           class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
         />
-        
+
         <ErrorMessage class="text-red-600" name="confirm_password" />
       </div>
 
@@ -86,9 +86,14 @@ export default {
       schema: {
         name: 'required|min:3|max:100|alpha_spaces',
         email: 'required|min:3|max:50|email',
-        password: 'required|min:3| max:20',
+        password: 'required|min:3|max:20',
         confirm_password: 'confirmed:@password'
       }
+    }
+  },
+  methods: {
+    register(values) {
+      console.log(values)
     }
   }
 }
