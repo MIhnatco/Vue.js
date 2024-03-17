@@ -47,6 +47,7 @@
           name="password"
           aria-label="password"
           placeholder="Enter password:"
+          :bails="false"
           class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
         />
 
@@ -87,7 +88,7 @@ export default {
         name: 'required|min:3|max:100|alpha_spaces',
         email: 'required|min:3|max:50|email',
         password: 'required|min:3|max:20',
-        confirm_password: 'confirmed:@password'
+        confirm_password: 'password_mismatch:@password'
       }
     }
   },
