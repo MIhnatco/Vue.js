@@ -11,8 +11,7 @@
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
 
       <div
-        class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all 
-        sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+        class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
       >
         <div class="py-4 text-left px-6">
           <!--Title-->
@@ -71,7 +70,7 @@ export default {
   name: 'Auth',
   data() {
     return {
-      tab: 'login'
+      tab: 'login',
     }
   },
   computed: {
