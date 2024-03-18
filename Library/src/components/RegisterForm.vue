@@ -88,6 +88,8 @@
             id="confirm_password"
             placeholder="Confirm password:"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+
+            
             v-model="confirm_password"
             :class="{
               isValid: this.confirm_password.length >= 3 && this.confirm_password.length > 0,
