@@ -20,6 +20,11 @@
             aria-label="email"
             placeholder="Enter Email:"
             name="email"
+            v-model="email"
+            :class="{
+              isValid: this.email.length >= 4 && this.email.length > 0,
+              isInvalid: this.email.length < 4 && this.email.length > 0
+            }"
           />
 
           <ErrorMessage class="text-red-600" name="email" />
@@ -34,6 +39,11 @@
             id="password"
             aria-label="password"
             placeholder="Enter password:"
+            v-model="password"
+            :class="{
+              isValid: this.password.length >= 9 && this.password.length > 0,
+              isInvalid: this.password.length < 9 && this.password.length > 0
+            }"
           />
 
           <ErrorMessage class="text-red-600" name="password" />
@@ -65,6 +75,8 @@ export default {
   name: 'LoginForm',
   data() {
     return {
+      email: '',
+      password: '',
       loginSchema: {
         email: 'required|email',
         password: 'required|min:9|max:20'
@@ -83,17 +95,25 @@ export default {
   },
   methods: {
     login(values) {
-      this.login_in_submission = true;
-      this.login_alert_msg = "Please wait! We are logging you in."
+      this.login_in_submission = true
+      this.login_alert_msg = 'Please wait! We are logging you in.'
       this.login_alert_variant = 'bg-blue-500'
       this.login_show_alert = true
 
       this.login_alert_variant = 'bg-green-500'
-      this.login_alert_msg = "Success! You are now logged in."
+      this.login_alert_msg = 'Success! You are now logged in.'
       console.log(values)
     }
   }
 }
 </script>
 
-<style></style>
+<style>
+.isValid {
+  border-color: green;
+}
+
+.isInvalid {
+  border-color: red;
+}
+</style>

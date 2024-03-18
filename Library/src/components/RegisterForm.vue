@@ -29,6 +29,12 @@
             placeholder="Enter Name:"
             aria-label="name"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+            v-model="name"
+            :class="{
+              isValid: this.name.length >= 3 && this.name.length > 0,
+              isInvalid: this.name.length < 3 && this.name.length > 0
+            }"
+
           />
 
           <ErrorMessage class="text-red-600" name="name" />
@@ -43,6 +49,11 @@
             aria-label="email"
             placeholder="Enter Email:"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+            v-model="email"
+            :class="{
+              isValid: this.email.length >= 3 && this.email.length > 0,
+              isInvalid: this.email.length < 3 && this.email.length > 0
+            }"
           />
           <ErrorMessage class="text-red-600" name="email" />
         </div>
@@ -58,6 +69,11 @@
             placeholder="Enter password:"
             :bails="false"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+            v-model="password"
+            :class="{
+              isValid: this.password.length >= 3 && this.password.length > 0,
+              isInvalid: this.password.length < 3 && this.password.length > 0
+            }"
           />
 
           <ErrorMessage class="text-red-600" name="password" />
@@ -72,6 +88,11 @@
             id="confirm_password"
             placeholder="Confirm password:"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+            v-model="confirm_password"
+            :class="{
+              isValid: this.confirm_password.length >= 3 && this.confirm_password.length > 0,
+              isInvalid: this.confirm_password.length < 3 && this.confirm_password.length > 0
+            }"
           />
 
           <ErrorMessage class="text-red-600" name="confirm_password" />
@@ -95,10 +116,14 @@ export default {
   name: 'RegisterForm',
   data() {
     return {
+      name: "", 
+      email: '',
+      password: '', 
+      confirm_password: "",
       schema: {
         name: 'required|min:3|max:100|alpha_spaces',
-        email: 'required|min:3|max:50|email',
-        password: 'required|min:3|max:20',
+        email: 'required|min:4|max:50|email',
+        password: 'required|min:9|max:20',
         confirm_password: 'password_mismatch:@password'
       },
       reg_in_submission: false,
@@ -122,4 +147,12 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+.isValid {
+  border-color: green;
+}
+.isInvalid {
+  border-color: red;
+}
+</style>
