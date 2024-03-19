@@ -34,7 +34,6 @@
               isValid: this.name.length >= 3 && this.name.length > 0,
               isInvalid: this.name.length < 3 && this.name.length > 0
             }"
-
           />
 
           <ErrorMessage class="text-red-600" name="name" />
@@ -88,8 +87,6 @@
             id="confirm_password"
             placeholder="Confirm password:"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-
-            
             v-model="confirm_password"
             :class="{
               isValid: this.confirm_password.length >= 3 && this.confirm_password.length > 0,
@@ -114,14 +111,16 @@
 </template>
 
 <script>
+import firebase from '@/includes/firebase'
+
 export default {
   name: 'RegisterForm',
   data() {
     return {
-      name: "", 
+      name: '',
       email: '',
-      password: '', 
-      confirm_password: "",
+      password: '',
+      confirm_password: '',
       schema: {
         name: 'required|min:3|max:100|alpha_spaces',
         email: 'required|min:4|max:50|email',
@@ -135,22 +134,34 @@ export default {
     }
   },
   methods: {
-    register(values) {
+    async register(values) {
       this.reg_in_submission = true
       this.reg_show_alert = true
       this.reg_alert_variant = 'bg-blue-500'
       this.reg_alert_msg = 'Please wait! Your account is being created.'
 
+      let userCred = null
+
+      try {
+        userCred = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(values.email, values.password)
+      } catch (error) {
+        this.reg_in_submission = false
+        this.reg_alert_variant = 'bg-red-500'
+        this.reg_alert_msg = 'An unexpected error occured. Please, try again later!'
+        return
+      }
+
       this.reg_alert_variant = 'bg-green-500'
       this.reg_alert_msg = 'Success! Your account has been created.'
-      console.log(values)
+      console.log(userCred)
     }
   }
 }
 </script>
 
 <style>
-
 .isValid {
   border-color: green;
 }
