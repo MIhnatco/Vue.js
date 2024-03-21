@@ -6,32 +6,42 @@ export default defineStore('user', {
     userLoggedIn: false
   }),
   actions: {
-    //reusable function for registering the user
+    //registering a new user
     async register(values) {
+      //create a new user with email and passwrod (firebase)
       const userCred = await auth.createUserWithEmailAndPassword(values.email, values.password)
 
-      //connecting the user with its uid
+      //store additional user information in firestore (uid)
       await usersCollection.doc(userCred.user.uid).set({
         name: values.name,
         email: values.email
       })
-
-
-      //user profile
-      //user name 
+      
+      //updae user profile with display name
       await userCred.user.updateProfile({
         displayName: values.name 
       })
 
-      //user authentification status
+      //set the userLoggedIn state to true upon successful registration
       this.userLoggedIn = true
     }, 
+    //action for authenticating an existing user
     async authenticate(values){
-      //sign in 
+      //sign in with email and password
       await auth.signInWithEmailAndPassword(values.email, values.password);
 
-      //if success sing in..change the status
+      //set the userLoggedIn state to true upon successful authentication
       this.userLoggedIn = true
+    },
+
+    //action for signing out a user
+    async signOut(){
+
+      //sing out the current user (firebase signOut())
+      await auth.signOut()
+
+      //set the userLoggedIn state to false upon sign out
+      this.userLoggedIn = false;
     }
   }
 })
