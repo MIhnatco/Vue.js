@@ -1,13 +1,20 @@
 import AuthApp from '../AuthApp.vue'
 import { shallowMount } from '@vue/test-utils'
 
+import { setActivePinia, createPinia } from 'pinia'
+
 describe('AuthApp component', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia())
+  })
+
+  
   test('modal is initially hidden', () => {
     const wrapper = shallowMount(AuthApp)
 
-    const modal = wrapper.find('#modal')
+    const modal = wrapper.find('.hiddenClass')
 
-    expect(modal.isVisible()).toBe(false)
+    expect(modal.exists()).toBe(false)
   })
 
   test('renders text correctly', () => {

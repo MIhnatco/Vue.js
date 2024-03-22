@@ -1,7 +1,13 @@
 import HeaderApp from '../HeaderApp.vue'
 import { shallowMount } from '@vue/test-utils'
 
+import { setActivePinia, createPinia } from 'pinia'
+
 describe('HeaderApp.vue', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia())
+  })
+
   test('renders inner text', () => {
     const wrapper = shallowMount(HeaderApp)
 

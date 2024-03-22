@@ -70,7 +70,7 @@ export default {
   name: 'Auth',
   data() {
     return {
-      tab: 'login',
+      tab: 'login'
     }
   },
   computed: {
