@@ -1,27 +1,24 @@
 <script>
-import HeaderApp from './components/HeaderApp.vue'
-import IntroApp from './components/IntroApp.vue'
-
 import Auth from './components/AuthApp.vue'
+import HeaderApp from './components/HeaderApp.vue'
 
-import { mapWritableState } from 'pinia';
+import { mapWritableState } from 'pinia'
 import useUserStore from '@/stores/user'
-import {auth} from '@/includes/firebase'
+import { auth } from '@/includes/firebase'
 
 export default {
   name: 'App',
   components: {
     HeaderApp,
-    IntroApp,
     Auth
-  }, 
+  },
   computed: {
     ...mapWritableState(useUserStore, ['userLoggedIn'])
   },
-  created(){
+  created() {
     //persisting user authentication when logged in
-    if(auth.currentUser){
-      this.userLoggedIn = true;
+    if (auth.currentUser) {
+      this.userLoggedIn = true
     }
   }
 }
@@ -29,7 +26,8 @@ export default {
 
 <template>
   <header-app></header-app>
-  <intro-app></intro-app>
+
+  <router-view></router-view>
 
   <auth></auth>
 </template>

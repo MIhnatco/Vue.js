@@ -1,5 +1,14 @@
-<script></script>
+<script>
+import IntroApp from '../components/IntroApp.vue'
+
+export default {
+  name: 'HomeApp',
+  components: {
+    IntroApp
+  }
+}
+</script>
 
 <template>
-  <main></main>
+  <intro-app></intro-app>
 </template>
