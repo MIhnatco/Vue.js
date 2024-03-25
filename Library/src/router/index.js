@@ -5,14 +5,17 @@ import DashboardApp from '@/views/DashboardView.vue'
 
 const routes = [
   {
+    name: 'home',
     path: '/',
     component: HomeApp
   },
   {
+    name: 'about',
     path: '/about',
     component: AboutApp
   },
   {
+    name: 'dashboard',
     path: '/dashboard',
     component: DashboardApp
   }
