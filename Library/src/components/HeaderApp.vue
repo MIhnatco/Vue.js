@@ -1,7 +1,7 @@
 <template>
   <header class="bg-yellow-700 flex items-center">
     <nav class="container text-center md:flex md:justify-start items-center py-5 px-4 mx-auto">
-      <router-link class="text-white font-bold uppercase text-xl md:text-2xl mr-4" to="/">
+      <router-link class="text-white font-bold uppercase text-xl md:text-2xl mr-4" exact-active-class="no-active" to="/">
         Library App
       </router-link>
 
@@ -25,7 +25,9 @@
 
           <template v-else>
             <li>
-              <router-link to="/dashboard" aria-label="Dashboard" class="px-2 text-white">Dashboard</router-link>
+              <router-link to="/dashboard" aria-label="Dashboard" class="px-2 text-white"
+                >Dashboard</router-link
+              >
             </li>
             <li>
               <a
