@@ -16,8 +16,16 @@ const routes = [
   },
   {
     name: 'dashboard',
-    path: '/dashboard',
+    path: '/dashboard-user',
     component: DashboardApp
+  },
+  {
+    path: '/dashboard',
+    redirect: { name: 'dashboard' }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: { name: 'home' }
   }
 ]
 
