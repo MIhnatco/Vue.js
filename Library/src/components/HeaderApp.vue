@@ -37,11 +37,7 @@
               >
             </li>
             <li>
-              <a
-                href="#"
-                aria-label="Logout"
-                class="px-2 text-white"
-                @click.prevent="userStore.signOut"
+              <a href="#" aria-label="Logout" class="px-2 text-white" @click.prevent="signOut"
                 >Logout</a
               >
             </li>
@@ -63,8 +59,18 @@ export default {
     ...mapStores(useModalStore, useUserStore)
   },
   methods: {
+    //toggle modal
     toggleAuthModal() {
       this.modalStore.isOpen = !this.modalStore.isOpen
+    },
+    signOut() {
+      //sign out current user
+      this.userStore.signOut()
+
+      //redirecting the page after logout
+      if (this.$route.name === 'dashboard') {
+        this.$router.push({ name: 'home' })
+      }
     }
   }
 }

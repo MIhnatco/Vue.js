@@ -16,7 +16,7 @@
           <vee-field
             class="block w-full text-gray-800 border border-gray-300 px-3 py-1.5 transition duration-500 focus:outline-none focus:border-black rounded"
             type="email"
-            id="email"
+            id="emailLog"
             aria-label="email"
             placeholder="Enter Email:"
             name="email"
@@ -36,7 +36,7 @@
             class="block w-full text-gray-800 border border-gray-300 px-3 py-1.5 transition duration-500 focus:outline-none focus:border-black rounded"
             type="password"
             name="password"
-            id="password"
+            id="passwordLog"
             aria-label="password"
             placeholder="Enter password:"
             v-model="password"
@@ -74,7 +74,6 @@
 import { mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
 
-
 export default {
   name: 'LoginForm',
   data() {
@@ -98,7 +97,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useUserStore, ['authenticate']), 
+    ...mapActions(useUserStore, ['authenticate']),
 
     async login(values) {
       this.login_in_submission = true
@@ -109,18 +108,19 @@ export default {
       try {
         await this.authenticate(values)
 
-      } catch(error){
-        this.login_in_submission = false;
-        this.login_alert_variant = "bg-red-500"
-        this.login_alert_msg = "Invalid login details"
-        return;
+        //redirecting the page after login
+        if (this.$route.path === '/' || this.$route.path === '/about') {
+          this.$router.push({ path: '/dashboard-user' })
+        }
+      } catch (error) {
+        this.login_in_submission = false
+        this.login_alert_variant = 'bg-red-500'
+        this.login_alert_msg = 'Invalid login details'
+        return
       }
 
       this.login_alert_variant = 'bg-green-500'
       this.login_alert_msg = 'Success! You are now logged in.'
-      console.log(values)
-
-      window.location.reload()
     }
   }
 }
