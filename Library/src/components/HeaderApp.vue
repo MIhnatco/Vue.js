@@ -68,7 +68,7 @@ export default {
       this.userStore.signOut()
 
       //redirecting the page after logout
-      if (this.$route.name === 'dashboard') {
+      if (this.$route.meta.requiresAuth) {
         this.$router.push({ name: 'home' })
       }
     }

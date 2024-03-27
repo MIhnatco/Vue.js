@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import useUserStore from '@/stores/user'
+//import useUserStore from '@/stores/user'
 
 export default {
   name: 'DashboardApp',
-
+/*
   //Route Guard - accessing page only if authenticated
   beforeRouteEnter(to, from, next) {
     //we can use useUserStore() as a function
@@ -19,7 +19,7 @@ export default {
     } else {
       next({ name: 'home' })
     }
-  }
+  }*/
 }
 </script>
 

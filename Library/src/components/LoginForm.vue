@@ -107,11 +107,6 @@ export default {
 
       try {
         await this.authenticate(values)
-
-        //redirecting the page after login
-        if (this.$route.path === '/' || this.$route.path === '/about') {
-          this.$router.push({ path: '/dashboard-user' })
-        }
       } catch (error) {
         this.login_in_submission = false
         this.login_alert_variant = 'bg-red-500'
@@ -121,6 +116,13 @@ export default {
 
       this.login_alert_variant = 'bg-green-500'
       this.login_alert_msg = 'Success! You are now logged in.'
+
+      //window.location.reload()
+
+      //redirecting the page after login
+      if (this.$route.path === '/' || this.$route.path === '/about') {
+        this.$router.push({ path: '/dashboard-user' })
+      }
     }
   }
 }

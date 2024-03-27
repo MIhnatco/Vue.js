@@ -3,6 +3,8 @@ import HomeApp from '@/views/HomeView.vue'
 import AboutApp from '@/views/AboutView.vue'
 import DashboardApp from '@/views/DashboardView.vue'
 
+import useUserStore from '@/stores/user'
+
 const routes = [
   {
     name: 'home',
@@ -17,7 +19,10 @@ const routes = [
   {
     name: 'dashboard',
     path: '/dashboard-user',
-    component: DashboardApp
+    component: DashboardApp,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/dashboard',
@@ -33,6 +38,21 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   linkExactActiveClass: 'text-yellow-500'
+})
+
+router.beforeEach((to, from, next) => {
+  if (!to.meta.requiresAuth) {
+    next()
+    return
+  }
+
+  const store = useUserStore()
+
+  if (store.userLoggedIn) {
+    next()
+  } else {
+    next({ name: 'home' })
+  }
 })
 
 export default router
