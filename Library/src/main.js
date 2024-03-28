@@ -6,22 +6,24 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import VeeValidatePlugin from "./includes/validation"
-import {auth} from  "./includes/firebase"
+import VeeValidatePlugin from './includes/validation'
+import { auth } from './includes/firebase'
 
+//custom directive
+import Icon from './directives/icon'
 
-let app;
+let app
 //initializing firebase first
 auth.onAuthStateChanged(() => {
-    if(!app){
-        app = createApp(App)
-        
-        app.use(createPinia())
-        app.use(router)
-        app.use(VeeValidatePlugin)
-        
-        app.mount('#app')
+  if (!app) {
+    app = createApp(App)
 
-    }
+    app.use(createPinia())
+    app.use(router)
+    app.use(VeeValidatePlugin)
 
+    app.mount('#app')
+
+    app.directive('icon', Icon)
+  }
 })
