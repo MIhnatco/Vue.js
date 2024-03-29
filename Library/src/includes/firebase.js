@@ -6,6 +6,9 @@ import 'firebase/auth'
 //interact with database
 import 'firebase/firestore'
 
+//interact with storage
+import 'firebase/storage'
+
 const firebaseConfig = {
   apiKey: 'AIzaSyBdCZCiB9IC3F-6tRBojrZhPAw6vcS_coA',
   authDomain: 'library-72d68.firebaseapp.com',
@@ -20,6 +23,7 @@ firebase.initializeApp(firebaseConfig)
 
 const auth = firebase.auth();
 const db = firebase.firestore();
+const storage = firebase.storage();
 
 const usersCollection = db.collection('users')
 
@@ -27,5 +31,6 @@ const usersCollection = db.collection('users')
 export {
   auth, 
   db, 
-  usersCollection
+  usersCollection, 
+  storage
 }

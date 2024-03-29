@@ -3,6 +3,9 @@ import HomeApp from '@/views/HomeView.vue'
 import AboutApp from '@/views/AboutView.vue'
 import DashboardApp from '@/views/DashboardView.vue'
 
+import UserLibrary from '@/components/UserLibrary.vue'
+import UserProfile from '@/components/UserProfile.vue'
+
 import useUserStore from '@/stores/user'
 
 const routes = [
@@ -22,7 +25,11 @@ const routes = [
     component: DashboardApp,
     meta: {
       requiresAuth: true
-    }
+    },
+    children: [
+      { name: 'profile', path: 'profile', component: UserProfile },
+      { name: 'library', path: 'library', component: UserLibrary }
+    ]
   },
   {
     path: '/dashboard',
